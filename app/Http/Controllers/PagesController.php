@@ -11,8 +11,14 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $latestproducts = Product::latest()->limit(3)->get();
-        return view('welcome', compact('latestproducts'));
+        $latestProducts = Product::latest()->limit(3)->get();
+        return view('home', compact('latestProducts'));
+    }
+
+    public function product()
+    {
+        $latestProducts = Product::latest()->limit(3)->get();
+        return view('product', compact('latestProducts'));
     }
 
     public function about()
@@ -25,22 +31,42 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    public function categoryproducts($catid)
+    public function categoryProducts($catid)
     {
         $category = Category::find($catid);
+
+        if (!$category) {
+            abort(404, 'Category not found');
+        }
+
         $products = Product::where('category_id', $catid)->paginate(3);
         return view('categoryproducts', compact('products', 'category'));
     }
 
-    public function viewproduct($id)
+    public function viewProduct($id)
     {
         $product = Product::find($id);
-        $relatedproducts = Product::where('category_id',$product->category_id)->where('id','!=',$id)->get();
-        return view('viewproduct', compact('product', 'relatedproducts'));
+
+        if (!$product) {
+            abort(404, 'Product not found');
+        }
+
+        $relatedProducts = Product::where('category_id', $product->category_id)
+                                  ->where('id', '!=', $id)
+                                  ->get();
+
+        return view('viewproduct', compact('product', 'relatedProducts'));
     }
-    public function myprofile()
+
+    public function myProfile()
     {
-        $orders = Order::where('user_id', auth()->user()->id)->get();
-        return view('myprofile',compact('orders'));
+        $user = auth()->user();
+
+        if (!$user) {
+            abort(403, 'Unauthorized access');
+        }
+
+        $orders = Order::where('user_id', $user->id)->get();
+        return view('myprofile', compact('orders'));
     }
 }

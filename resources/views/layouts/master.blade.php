@@ -24,6 +24,8 @@
         <h2 class="font-bold text-3xl">Online Shoes</h2>
         <div class="flex gap-10">
             <a href="{{ route('home') }}" class="hover:text-gray-300">Home</a>
+            <a href="{{ route('product') }}" class="hover:text-gray-300">Product</a>
+
             @php $categories = \App\Models\Category::orderBy('priority')->get(); @endphp
             @foreach($categories as $category)
             <a href="{{ route('categoryproducts', $category->id) }}" class="hover:text-gray-300">{{ $category->name }}</a>
