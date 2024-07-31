@@ -46,17 +46,18 @@ class PagesController extends Controller
     public function viewProduct($id)
     {
         $product = Product::find($id);
-
+    
         if (!$product) {
             abort(404, 'Product not found');
         }
-
+    
         $relatedProducts = Product::where('category_id', $product->category_id)
                                   ->where('id', '!=', $id)
                                   ->get();
-
+    
         return view('viewproduct', compact('product', 'relatedProducts'));
     }
+    
 
     public function myProfile()
     {

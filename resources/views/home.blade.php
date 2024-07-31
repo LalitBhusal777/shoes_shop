@@ -5,7 +5,7 @@
 <!-- Hero Section -->
 <section class="relative bg-gray-800 text-white">
     <div class="absolute inset-0">
-        <img src="{{ asset('images/hero-banner.jpg') }}" alt="Hero Banner" class="w-full h-full object-cover">
+        <img src="{{ asset('https://static.vecteezy.com/system/resources/thumbnails/013/773/654/small/banner-with-new-pair-of-white-sneakers-isolated-on-light-yellow-and-orange-background-sportive-pair-of-shoes-for-mockup-fashionable-stylish-sports-casual-shoes-photo.jpg') }}" alt="Hero Banner" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black opacity-50"></div>
     </div>
     <div class="relative container mx-auto px-6 py-16 text-center">
@@ -43,7 +43,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Example category item -->
             <a href="{{ route('categoryproducts', 1) }}" class="p-4 bg-white rounded-lg shadow-md">
-                <img src="{{ asset('images/categories/category1.jpg') }}" alt="Category Name" class="w-full h-40 object-cover rounded-lg mb-4">
+                <img src="{{ asset('https://png.pngtree.com/thumb_back/fh260/background/20220929/pngtree-shoes-promotion-banner-background-image_1466238.jpg') }}" alt="Category Name" class="w-full h-40 object-cover rounded-lg mb-4">
                 <h3 class="text-xl font-semibold">Category Name</h3>
             </a>
             <!-- Repeat for other categories -->

@@ -1,4 +1,3 @@
-<!-- resources/views/orders/index.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'Orders')
@@ -30,7 +29,7 @@
                             <img src="{{ asset('images/products/' . $order->product->photopath) }}" class="w-16 h-16 object-cover mr-2" alt="{{ $order->product->name }}">
                             {{ $order->product->name }}
                         </td>
-                        <td class="py-2 px-4">{{ $order->quantity }}</td>
+                        <td class="py-2 px-4 text-center">{{ $order->quantity }}</td>
                         <td class="py-2 px-4">{{ $order->price }}</td>
                         <td class="py-2 px-4">{{ $order->status }}</td>
                         <td class="py-2 px-4">{{ $order->order_date }}</td>

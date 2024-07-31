@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -17,7 +16,7 @@ class CartController extends Controller
         $data['user_id'] = auth()->id();
         $check = Cart::where('user_id', $data['user_id'])->where('product_id', $data['product_id'])->first();
         if ($check) {
-            return redirect()->back()->with('success', 'Product Already in Cart');
+            return redirect()->back()->with('success', 'Product already in cart');
         }
         Cart::create($data);
         return redirect()->back()->with('success', 'Product added to cart successfully');
@@ -28,12 +27,10 @@ class CartController extends Controller
         $carts = Cart::where('user_id', auth()->id())->get();
         return view('cart', compact('carts'));
     }
-    public function removeFromCart($cartId)
-    {
-        // If using a database-based cart
-        Cart::destroy($cartId);
 
+    public function removeFromCart($id)
+    {
+        Cart::destroy($id);
         return redirect()->back()->with('success', 'Item removed from cart.');
     }
-   
 }
